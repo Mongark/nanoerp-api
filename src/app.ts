@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 
 import cors from 'cors';
 
-import { RoomRoutes } from './routes/roomRouter';
+import { EventRouter } from './routes/eventRouter';
 // import GuestRoutes from './routes/guestRouter';
 // import UserRoutes from './routes/userRouter';
 
@@ -23,11 +23,15 @@ database.on('error', (error) => {
     console.log(error);
 })
 
+database.on('connection', (stream) => {
+  console.log('Database connected!');
+});
+
 app.use(json());
 app.use(cors());
 
 masterRouter.get('/ping', (req, res) => res.status(200).send("pong"));
-masterRouter.use('/rooms', RoomRoutes);
+masterRouter.use('/eventos', EventRouter);
 // masterRouter.use('/guests', GuestRoutes);
 // masterRouter.use('/users', UserRoutes);
 

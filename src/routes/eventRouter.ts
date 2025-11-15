@@ -1,58 +1,56 @@
+import EventModel from "../data/models/EventModel";
 import RouterConfig from "../generators/CommonTypes/RouterConfig";
-import GuestModel from "../data/models/GuestModel";
 import RouterFactory from "../generators/Factories/RouterFactory";
 
-const config: RouterConfig[] = [
+export const event_config: RouterConfig[] = [
     {
         type:       "GET",
-        uri:        "/getOneById/:id",
+        uri:        "/one/:id",
         middleware: {
             type: "GET_BY_ID",
-            model: GuestModel,
+            model: EventModel,
         },
-    },
+   },
     {
         type:       "GET",
-        uri:        "/getAll",
+        uri:        "/all",
         middleware: {
             type: "GET_ALL",
-            model: GuestModel
+            model: EventModel,
         },
     },
     {
         type:       "GET",
-        uri:        "/getCount",
+        uri:        "/count",
         middleware: {
             type: "GET_COUNT",
-            model: GuestModel,
+            model: EventModel,
         },
     },
     {
         type:       "POST",
-        uri:        "/postOne",
+        uri:        "/",
         middleware: {
             type: "POST_ONE",
-            model: GuestModel,
+            model: EventModel,
         },
     },
     {
         type:       "PATCH",
-        uri:        "/updateOneById/:id",
+        uri:        "/:id",
         middleware: {
             type: "UPDATE_BY_ID",
-            model: GuestModel,
+            model: EventModel,
         },
     },
     {
         type:       "DELETE",
-        uri:        "/deleteOneById/:id",
+        uri:        "/:id",
         middleware: {
             type: "DELETE_BY_ID",
-            model: GuestModel,
+            model: EventModel,
         },
     },
 ];
 
-const GuestRoutes = RouterFactory.createRoute(config);
-
-export default GuestRoutes;
+export const EventRouter = RouterFactory.createRoute(event_config);
