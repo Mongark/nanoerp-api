@@ -18,17 +18,16 @@ const LocationDataSchema = new Schema({
 }, { _id: false }); // Não criar _id para subdocumento
 
 const EventSchema = new Schema({
-  title: { type: String },
-  description: { type: String },
-  location: { type: String }, // Manter para compatibilidade
+  title: { type: String, required: true},
+  description: { type: String, required: true },
+  location: { type: String, required: true }, // Manter para compatibilidade
   // locationData: { type: LocationDataSchema }, // Novos dados estruturados
   createdAt: { type: Date, default: Date.now },
-  // imageUrl: { type: String },    
-  startDateTime: { type: Date, default: Date.now  },          
-  price: { type: String },
-  isFree: { type: Boolean, default: true },
-  link: { type: String },                       
-  capacity: { type: Number },                    
+  // imageUrl: { type: String },
+  startDateTime: { type: Date, default: Date.now  },
+  price: { type: String, required: true },
+  link: { type: String, required: false },
+  capacity: { type: Number, required: true },
   // category: { type: Schema.Types.ObjectId, ref: 'Category' },
   // organizer: { type: Schema.Types.ObjectId, ref: 'User' },
 })
